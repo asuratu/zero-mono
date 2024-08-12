@@ -16,9 +16,6 @@ public/upload/*
 
 #tmp
 app/user/rpc/tmp
+app/user/api/tmp
 app/user/rpc/tmp/*
-
-
-
-
-
+app/user/api/tmp/*
