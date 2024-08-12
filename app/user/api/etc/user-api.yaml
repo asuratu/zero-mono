@@ -5,6 +5,7 @@ Port: 6001
 Log:
     ServiceName: user.api
     Mode: console
+    Stat: false
     Path: ../../../public/logs/user/api
     KeepDays: 1
     Encoding: plain
