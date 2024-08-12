@@ -1,0 +1,51 @@
+info (
+	title:  "user api"
+	desc:   "用户系统"
+	author: "AsuraTu"
+	email:  "455224159@qq.com"
+)
+
+type UserInfoByIdReq {
+	Id int64 `path:"id"`
+}
+
+type SimpleUserInfoReply {
+	Id     int64  `json:"id"`
+	Name   string `json:"name"`
+	City   string `json:"city"`
+	Avatar string `json:"avatar"`
+}
+
+type UserRegisterReq {
+	Name     string `json:"name"`
+	Password string `json:"password"`
+	City     string `json:"city"`
+	Avatar   string `json:"avatar"`
+}
+
+type UserRegisterRes {
+	Id int64 `json:"id"`
+}
+
+@server (
+	prefix: user/v1
+	group:  user
+)
+service user-api {
+	@doc "根据id获取用户详情"
+	@handler getUserInfoById
+	get /users/:id (UserInfoByIdReq) returns (SimpleUserInfoReply)
+
+	@doc "根据id获取用户详情"
+	@handler getUserDetail
+	get /users/show/:id (UserInfoByIdReq) returns (SimpleUserInfoReply)
+
+	@doc "注册用户"
+	@handler registerUser
+	post /users (UserRegisterReq) returns (UserRegisterRes)
+
+	@doc "登录"
+	@handler login
+	post /login (UserRegisterReq) returns (UserRegisterRes)
+}
+

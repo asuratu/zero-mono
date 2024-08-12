@@ -1,0 +1,24 @@
+# idea
+.idea
+.idea/
+*.iml
+.DS_Store
+**/.DS_Store
+
+#deploy data
+default.etcd/*
+data/*
+!data/.gitkeep
+
+#public
+public/logs/*
+public/upload/*
+
+#tmp
+app/user/rpc/tmp
+app/user/rpc/tmp/*
+
+
+
+
+

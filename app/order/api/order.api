@@ -1,0 +1,26 @@
+info (
+	title:  "order api"
+	desc:   "订单系统"
+	author: "AsuraTu"
+	email:  "455224159@qq.com"
+)
+
+type OrderInfoByIdReq {
+	Id int64 `path:"id"`
+}
+
+type SimpleOrderInfoReply {
+	Id   int64  `json:"id"`
+	Name string `json:"name"`
+}
+
+@server (
+	prefix: order/v1
+	group:  order
+)
+service order-api {
+	@doc "根据id获取订单详情"
+	@handler getOrderInfoById
+	get /orders/:id (OrderInfoByIdReq) returns (SimpleOrderInfoReply)
+}
+
