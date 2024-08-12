@@ -1,0 +1,162 @@
+syntax = "proto3";
+
+option go_package ="./pb";
+
+package user;
+
+// ------------------------------------ 
+// Messages
+// ------------------------------------ 
+
+//--------------------------------用户表--------------------------------
+message User {
+  int64 id = 1; //id
+  int64 createTime = 2; //createTime
+  int64 updateTime = 3; //updateTime
+  string mobile = 4; //mobile
+  string password = 5; //password
+  string nickname = 6; //nickname
+  int64 sex = 7; //性别 0:男 1:女
+  string avatar = 8; //avatar
+  string info = 9; //info
+}
+
+message AddUserReq {
+  string mobile = 1; //mobile
+  string password = 2; //password
+  string nickname = 3; //nickname
+  int64 sex = 4; //性别 0:男 1:女
+  string avatar = 5; //avatar
+  string info = 6; //info
+}
+
+message AddUserResp {
+}
+
+message UpdateUserReq {
+  int64 id = 1; //id
+  string mobile = 2; //mobile
+  string password = 3; //password
+  string nickname = 4; //nickname
+  int64 sex = 5; //性别 0:男 1:女
+  string avatar = 6; //avatar
+  string info = 7; //info
+}
+
+message UpdateUserResp {
+}
+
+message DelUserReq {
+  int64 id = 1; //id
+}
+
+message DelUserResp {
+}
+
+message GetUserByIdReq {
+  int64 id = 1; //id
+}
+
+message GetUserByIdResp {
+  User user = 1; //user
+}
+
+message SearchUserReq {
+  int64 page = 1; //page
+  int64 limit = 2; //limit
+  int64 id = 3; //id
+  int64 createTime = 4; //createTime
+  int64 updateTime = 5; //updateTime
+  string mobile = 6; //mobile
+  string password = 7; //password
+  string nickname = 8; //nickname
+  int64 sex = 9; //性别 0:男 1:女
+  string avatar = 10; //avatar
+  string info = 11; //info
+}
+
+message SearchUserResp {
+  repeated User user = 1; //user
+}
+
+//--------------------------------用户授权表--------------------------------
+message UserAuth {
+  int64 id = 1; //id
+  int64 createTime = 2; //createTime
+  int64 updateTime = 3; //updateTime
+  int64 userId = 4; //userId
+  string authKey = 5; //平台唯一id
+  string authType = 6; //平台类型
+}
+
+message AddUserAuthReq {
+  int64 userId = 1; //userId
+  string authKey = 2; //平台唯一id
+  string authType = 3; //平台类型
+}
+
+message AddUserAuthResp {
+}
+
+message UpdateUserAuthReq {
+  int64 id = 1; //id
+  int64 userId = 2; //userId
+  string authKey = 3; //平台唯一id
+  string authType = 4; //平台类型
+}
+
+message UpdateUserAuthResp {
+}
+
+message DelUserAuthReq {
+  int64 id = 1; //id
+}
+
+message DelUserAuthResp {
+}
+
+message GetUserAuthByIdReq {
+  int64 id = 1; //id
+}
+
+message GetUserAuthByIdResp {
+  UserAuth userAuth = 1; //userAuth
+}
+
+message SearchUserAuthReq {
+  int64 page = 1; //page
+  int64 limit = 2; //limit
+  int64 id = 3; //id
+  int64 createTime = 4; //createTime
+  int64 updateTime = 5; //updateTime
+  int64 userId = 6; //userId
+  string authKey = 7; //平台唯一id
+  string authType = 8; //平台类型
+}
+
+message SearchUserAuthResp {
+  repeated UserAuth userAuth = 1; //userAuth
+}
+
+
+
+// ------------------------------------ 
+// Rpc Func
+// ------------------------------------ 
+
+service user{ 
+
+	 //-----------------------用户表----------------------- 
+	 rpc AddUser(AddUserReq) returns (AddUserResp); 
+	 rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp); 
+	 rpc DelUser(DelUserReq) returns (DelUserResp); 
+	 rpc GetUserById(GetUserByIdReq) returns (GetUserByIdResp); 
+	 rpc SearchUser(SearchUserReq) returns (SearchUserResp); 
+	 //-----------------------用户授权表----------------------- 
+	 rpc AddUserAuth(AddUserAuthReq) returns (AddUserAuthResp); 
+	 rpc UpdateUserAuth(UpdateUserAuthReq) returns (UpdateUserAuthResp); 
+	 rpc DelUserAuth(DelUserAuthReq) returns (DelUserAuthResp); 
+	 rpc GetUserAuthById(GetUserAuthByIdReq) returns (GetUserAuthByIdResp); 
+	 rpc SearchUserAuth(SearchUserAuthReq) returns (SearchUserAuthResp); 
+
+}
