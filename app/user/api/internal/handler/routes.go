@@ -4,6 +4,7 @@ package handler
 import (
 	"net/http"
 
+	test "mono/app/user/api/internal/handler/test"
 	user "mono/app/user/api/internal/handler/user"
 	"mono/app/user/api/internal/svc"
 
@@ -11,6 +12,18 @@ import (
 )
 
 func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				// ping
+				Method:  http.MethodGet,
+				Path:    "/ping",
+				Handler: test.PingHandler(serverCtx),
+			},
+		},
+		rest.WithPrefix("/user/v1"),
+	)
+
 	server.AddRoutes(
 		[]rest.Route{
 			{

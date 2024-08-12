@@ -4,9 +4,10 @@ Port: 6001
 
 Log:
     ServiceName: user.api
-    Mode: file
+    Mode: console
     Path: ../../../public/logs/user/api
     KeepDays: 1
+    Encoding: plain
 
 #jwtAuth
 Auth:

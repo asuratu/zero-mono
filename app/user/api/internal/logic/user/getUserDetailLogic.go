@@ -15,7 +15,7 @@ type GetUserDetailLogic struct {
 	svcCtx *svc.ServiceContext
 }
 
-// 根据id获取用户详情
+// NewGetUserDetailLogic 根据id获取用户详情
 func NewGetUserDetailLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserDetailLogic {
 	return &GetUserDetailLogic{
 		Logger: logx.WithContext(ctx),

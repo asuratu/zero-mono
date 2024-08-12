@@ -23,6 +23,14 @@ type UserRegisterReq {
 	Avatar   string `json:"avatar"`
 }
 
+type PingReq {
+	Ping string `form:"ping"`
+}
+
+type PingRes {
+	Pone string `json:"pone"`
+}
+
 type UserRegisterRes {
 	Id int64 `json:"id"`
 }
@@ -47,5 +55,15 @@ service user-api {
 	@doc "登录"
 	@handler login
 	post /login (UserRegisterReq) returns (UserRegisterRes)
+}
+
+@server (
+	prefix: user/v1
+	group:  test
+)
+service user-api {
+	@doc "ping"
+	@handler ping
+	get /ping (PingReq) returns (PingRes)
 }
 

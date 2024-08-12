@@ -1,3 +1,8 @@
 ### get user by id
 GET {{userapi}}/users/2
 Content-Type: application/json
+
+
+### ping
+GET {{userapi}}/ping?ping=Tom
+Content-Type: application/json

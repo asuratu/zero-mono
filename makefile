@@ -1,9 +1,9 @@
-aair := $(shell which air)
+air := $(shell which air)
 sql2pb := $(shell which sql2pb)
 goctl := $(shell which goctl)
 date = $(shell date "+%Y-%m-%d-%H:%M:%S")
 
-dir = ~/code/go/go-zero/zero-demo
+dir = $(shell pwd)
 
 api:
 	@cd $(dir)/app/$(m)/api && $(air) $(m).go -f etc/$(m).yaml
