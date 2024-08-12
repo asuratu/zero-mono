@@ -1,6 +1,6 @@
 #!/bin/bash
-## author: "AsuraTu"
-## email: "455224159@qq.com"
+# author: "AsuraTu"
+# email: "tugecn@gmail.com"
 
 # 项目根目录
 projectPath=$(pwd)
