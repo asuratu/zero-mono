@@ -7,6 +7,6 @@ fi
 
 git add .
 git commit -m "$CONTENT"
-#git push
+git push -u origin main
 
 echo "Push Success!"
