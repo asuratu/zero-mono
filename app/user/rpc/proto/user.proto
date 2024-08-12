@@ -3,49 +3,44 @@ syntax = "proto3";
 package user;
 option go_package="./user";
 
+import "userModel.proto";
+
 message Request {
   string ping = 1;
 }
 message Response {
   string pong = 1;
 }
-service Ping {
-  rpc Ping(Request) returns(Response);
+
+message DefaultResponse {
 }
 
 message GetUserRequest {
-  int64 id = 1;
-}
-message DeleteUserRequest {
-  int64 id = 1;
+  user.UserId id = 1;
 }
 message GetUserResponse {
   int64 id = 1;
   string nickname = 2;
   string mobile = 3;
 }
+message DeleteUserRequest {
+  int64 id = 1;
+}
 message CreateUserRequest {
-  string nickname = 1;
-  string mobile = 2;
-  string password = 3;
-  string avatar = 4;
-  string info = 7;
-  string introduction = 8;
+  user.CreateOrUpdateUserReq in = 1;
 }
 message CreateUserResponse {
   int64 id = 1;
 }
 message UpdateUserRequest {
   int64 id = 1;
-  string nickname = 2;
-  string mobile = 3;
-  string password = 4;
-  string avatar = 5;
-  string info = 6;
-  string introduction = 7;
+  user.CreateOrUpdateUserReq in = 2;
 }
-message DefaultResponse {
+
+service Ping {
+  rpc Ping(Request) returns(Response);
 }
+
 service User {
   rpc GetUser(GetUserRequest) returns(GetUserResponse);
   rpc CreateUser(CreateUserRequest) returns(CreateUserResponse);

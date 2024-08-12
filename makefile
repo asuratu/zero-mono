@@ -27,7 +27,9 @@ model.origin:
 	@cd deploy/script/mysql && sh genModelOrigin.sh $(m) $(t) $(c)
 
 pb:
-	@cd $(dir)/app/$(m)/rpc && $(goctl) rpc protoc $(m).proto --go_out=./pb --go-grpc_out=./pb --zrpc_out=./ --style=goZero -m
+	@cd $(dir)/app/$(m)/rpc/proto && protoc -I ./ --go_out=paths=source_relative:../pb/$(m)/ --go-grpc_out=paths=source_relative:../pb/$(m)/ $(m)Model.proto \
+	# 然后生成当前项目的proto文件
+	@cd $(dir)/app/$(m)/rpc/proto && $(goctl) rpc protoc $(m).proto --go_out=../pb --go-grpc_out=../pb --zrpc_out=../ --style=goZero -m -c=true
 
 
 ############################################################

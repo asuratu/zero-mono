@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package user;
+option go_package="./user";
+
+message UserId {
+  int64 id = 1;
+}
+message SimpleUserItem {
+  int64 id = 1;
+  string nickname = 2;
+  string mobile = 3;
+}
+
+message CreateOrUpdateUserReq {
+  string nickname = 1;
+  string mobile = 2;
+  string password = 3;
+  string avatar = 4;
+  string info = 7;
+  string introduction = 8;
+}
