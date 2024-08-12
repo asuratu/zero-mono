@@ -6,6 +6,7 @@ import (
 	"mono/app/user/rpc/internal/svc"
 	"mono/app/user/rpc/pb/user"
 
+	"github.com/jinzhu/copier"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
@@ -24,7 +25,16 @@ func NewGetUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserLo
 }
 
 func (l *GetUserLogic) GetUser(in *user.GetUserRequest) (*user.GetUserResponse, error) {
-	// todo: add your logic here and delete this line
+	userResp := new(user.GetUserResponse)
+	u, err := l.svcCtx.UserModel.FindOne(l.ctx, in.Id)
+	if err != nil {
+		return nil, err
+	}
 
-	return &user.GetUserResponse{}, nil
+	err = copier.Copy(userResp, u)
+	if err != nil {
+		return nil, err
+	}
+
+	return userResp, nil
 }

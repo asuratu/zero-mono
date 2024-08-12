@@ -1,7 +1,14 @@
 ###
 GRPC localhost:6002/user.Ping/Ping
-#Authorization: Bearer <token>
 
 {
     "ping": "John Doe"
+}
+
+###
+GRPC localhost:6002/user.User/GetUser
+#Authorization: Bearer <token>
+
+{
+  "id": "2"
 }

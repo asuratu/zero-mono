@@ -7,7 +7,7 @@ Etcd:
   Key: user.rpc
 
 DB:
-  DataSource: root:@tcp(localhost:3306)/go-zero-looklook?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+  DataSource: root:tu4211241992@tcp(localhost:3306)/go-zero-looklook?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
 
 JwtAuth:
   AccessSecret: ae0536f9-6450-4606-8e13-5a19ed505da0

@@ -16,7 +16,7 @@ message DefaultResponse {
 }
 
 message GetUserRequest {
-  user.UserId id = 1;
+  int64 id = 1;
 }
 message GetUserResponse {
   int64 id = 1;
