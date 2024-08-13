@@ -2,6 +2,7 @@ package pinglogic
 
 import (
 	"context"
+	"encoding/base64"
 
 	"mono/app/user/rpc/internal/svc"
 	"mono/app/user/rpc/pb/user"
@@ -36,7 +37,9 @@ func (l *PingLogic) Ping(in *user.Request) (*user.Response, error) {
 		logx.Info("name: ", name)
 		//
 		if len(name) > 0 {
-			logx.Info("first name: ", name[0])
+			// base64 decode
+			nameDecoded, _ := base64.StdEncoding.DecodeString(name[0])
+			logx.Info("first name: ", string(nameDecoded))
 		}
 	}
 

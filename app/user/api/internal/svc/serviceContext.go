@@ -2,6 +2,7 @@ package svc
 
 import (
 	"context"
+	"encoding/base64"
 
 	"mono/app/user/api/internal/config"
 	"mono/app/user/rpc/client/ping"
@@ -32,8 +33,11 @@ func NewServiceContext(c config.Config) *ServiceContext {
 
 func PingInterceptor(ctx context.Context, method string, req, reply any, cc *grpc.ClientConn, invoker grpc.UnaryInvoker, opts ...grpc.CallOption) error {
 	// 给请求添加 metadata
+	nickname := "张三222"
+	// base64编码
+	nickname = base64.StdEncoding.EncodeToString([]byte(nickname))
 	md := metadata.New(map[string]string{
-		"nickname": "zhangsan111",
+		"nickname": nickname,
 	})
 	ctx = metadata.NewOutgoingContext(ctx, md)
 
