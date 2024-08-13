@@ -3,7 +3,7 @@ ListenOn: 0.0.0.0:6002
 Mode: dev
 Etcd:
   Hosts:
-    - 127.0.0.1:2379
+    - 0.0.0.0:2379
   Key: user.rpc
 
 DB:
@@ -22,6 +22,8 @@ Cache:
     Pass:
 Log:
   ServiceName: user.rpc
-  Mode: file
+  Mode: console
+  Stat: false
   Path: ../../../public/logs/user/rpc
   KeepDays: 7
+  Encoding: plain

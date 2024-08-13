@@ -50,7 +50,7 @@ func (l *PingLogic) Ping(req *types.PingReq) (resp *types.PingRes, err error) {
 	if err != nil {
 		return nil, err
 	}
-	logx.Info("user info: ", u)
+	logx.Info("user info: id = ", u.Id)
 
 	return
 }

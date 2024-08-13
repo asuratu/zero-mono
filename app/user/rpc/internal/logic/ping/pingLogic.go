@@ -6,6 +6,8 @@ import (
 	"mono/app/user/rpc/internal/svc"
 	"mono/app/user/rpc/pb/user"
 
+	"google.golang.org/grpc/metadata"
+
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
@@ -24,6 +26,20 @@ func NewPingLogic(ctx context.Context, svcCtx *svc.ServiceContext) *PingLogic {
 }
 
 func (l *PingLogic) Ping(in *user.Request) (*user.Response, error) {
+	logx.Infof("ping received: %s", in.Ping)
+
+	// 处理 metadata
+	if md, ok := metadata.FromIncomingContext(l.ctx); ok {
+		logx.Info("metadata: ", md)
+		name := md.Get("nickname")
+
+		logx.Info("name: ", name)
+		//
+		if len(name) > 0 {
+			logx.Info("first name: ", name[0])
+		}
+	}
+
 	return &user.Response{
 		Pong: in.Ping + " pong from rpc server",
 	}, nil
