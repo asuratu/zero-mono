@@ -7,9 +7,8 @@ import (
 	"mono/app/user/rpc/internal/svc"
 	"mono/app/user/rpc/pb/user"
 
-	"google.golang.org/grpc/metadata"
-
 	"github.com/zeromicro/go-zero/core/logx"
+	"google.golang.org/grpc/metadata"
 )
 
 type PingLogic struct {
